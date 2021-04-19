@@ -13,8 +13,10 @@ class Navbar extends React.Component<NavbarProps> {
         return ( 
             <div className="blue-gradient fixed items-center flex flex-col top-0 left-0 h-screen w-28 p-8">
                 <SolidIconLogo color="white" />
-                <NavButton onSelect={ this.props.onSelect } button_type="Home" color="white" selected={this.props.selected === "Home"}/>
-                <NavButton onSelect={ this.props.onSelect } button_type="Search" color="white" selected={this.props.selected === "Search"}/>
+                <div className="mt-16">
+                    <NavButton onSelect={ this.props.onSelect } button_type="Home" color="white" selected={this.props.selected === "Home"}/>
+                    <NavButton onSelect={ this.props.onSelect } button_type="Search" color="white" selected={this.props.selected === "Search"}/>
+                </div>
             </div>
         );
     }
