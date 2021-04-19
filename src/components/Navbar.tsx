@@ -1,6 +1,4 @@
 import React from 'react';
-import '../styles/colors.css';
-import '../styles/navbar.css';
  
 export interface NavbarProps {
     

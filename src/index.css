@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.shadow-right {
+    box-shadow: 10px 0px 15px rgba(0, 0, 0, 0.03);
+}
+
+.blue-gradient {
+    background: linear-gradient(184.07deg, #FFFFFF -26.57%, #00AEEF 38.78%, #00AEEF 49.13%, #00AEEF 58.18%, #00AEEF 67.37%, #FFFFFF 132.56%);
+}
+
