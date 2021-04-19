@@ -3,7 +3,7 @@ import './App.css';
 
 class App extends React.Component {
   render() {
-    return <div className="App">Testing</div>
+    return <div className="App"></div>
   }
 }
 
