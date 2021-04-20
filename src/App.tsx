@@ -27,7 +27,7 @@ class App extends React.Component<AppProps, AppState> {
 
     render() { 
         return ( 
-            <div className="App">
+            <div className="App flex flex-row">
                 <Navbar onSelect={ this.onSelect } selected={this.state.selected} />
                 <ContentView />
             </div>
