@@ -1,5 +1,8 @@
 import React from 'react';
+import ArxivService from '../services/ArxivService';
 import CategoryPanel from './CategoryPanel';
+import PaperList from './PaperList';
+import Paper from '../types/Paper';
 
 export interface ContentViewProps {
     
@@ -7,30 +10,44 @@ export interface ContentViewProps {
  
 export interface ContentViewState {
     terms: string[];
+    papers: Paper[];
 }
  
 class ContentView extends React.Component<ContentViewProps, ContentViewState> {
+    arxivService: ArxivService;
+
     constructor(props: ContentViewProps | Readonly<ContentViewProps>) {
         super(props);
         this.state = { 
-            terms:  []
+            terms:  [],
+            papers: []
         }
+        this.arxivService = new ArxivService();
         this.toggleTerm = this.toggleTerm.bind(this);
         this.addTerms = this.addTerms.bind(this);
         this.removeTerm = this.removeTerm.bind(this);
     }
 
-    private toggleTerm(term: string) {
+    private async toggleTerm(term: string) {
         const index = this.state.terms.indexOf(term);
         if (index > -1) {
-            this.removeTerm(index);
+            await this.removeTerm(index);
         } else {
-            this.addTerms([term]);
+            await this.addTerms([term]);
         }
+        this.arxivService.queryArxiv(this.state.terms)
+            .then((result) => {
+                this.setState({
+                    papers: result
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
-    private addTerms(terms: string[]) {
-        this.setState({
+    private async addTerms(terms: string[]) {
+        await this.setState({
             terms: [
                 ...terms,
                 ...this.state.terms
@@ -38,18 +55,19 @@ class ContentView extends React.Component<ContentViewProps, ContentViewState> {
         });
     }
 
-    private removeTerm(index: number) {
+    private async removeTerm(index: number) {
         var terms = this.state.terms;
         terms.splice(index, 1);
-        this.setState({
+        await this.setState({
             terms: terms,
         })
     }
 
     render() { 
         return ( 
-            <div>
+            <div className="w-full flex flex-row">
                 <CategoryPanel terms={ this.state.terms } selectCategory={ this.toggleTerm } />
+                <PaperList papers={this.state.papers} />
             </div>
         );
     }

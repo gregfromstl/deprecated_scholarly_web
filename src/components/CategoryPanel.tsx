@@ -13,14 +13,14 @@ export interface CategoryPanelProps {
  
 const CategoryPanel: React.SFC<CategoryPanelProps> = (props) => {
     return ( 
-        <div className="shadow-right bg-white fixed w-72 h-screen text-2xl font-light top-0 left-28 p-8">
+        <div className="shadow-right bg-white w-72 h-screen text-2xl font-light top-0 left-28 p-8">
             Categories
             <div className="categories text-sm items-center flex flex-col">
                 <CategoryButton onClick={ props.selectCategory } category="computer vision" active={props.terms.includes("computer vision")}>
                     <Camera className="w-12" />
                     Computer Vision
                 </CategoryButton>
-                <CategoryButton onClick={ props.selectCategory } category="quantitative finance" active={props.terms.includes("quantitative finance")}>
+                <CategoryButton onClick={ props.selectCategory } category="finance" active={props.terms.includes("finance")}>
                     <Finance className="w-12" />
                     Finance
                 </CategoryButton>
@@ -28,7 +28,7 @@ const CategoryPanel: React.SFC<CategoryPanelProps> = (props) => {
                     <Robot className="w-12" />
                     Robotics
                 </CategoryButton>
-                <CategoryButton onClick={ props.selectCategory } category="quantitative biology neuroscience" active={props.terms.includes("quantitative biology neuroscience")}>
+                <CategoryButton onClick={ props.selectCategory } category="neuroscience" active={props.terms.includes("neuroscience")}>
                     <Brain className="w-12" />
                     Neuroscience
                 </CategoryButton>
