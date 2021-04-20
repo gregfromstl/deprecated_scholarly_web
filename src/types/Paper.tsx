@@ -1,6 +1,6 @@
 type Paper = {
     title: string,
-    abstract: string
+    summary: string
 }
 
 export default Paper;

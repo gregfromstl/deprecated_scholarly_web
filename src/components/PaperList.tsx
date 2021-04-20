@@ -12,7 +12,7 @@ const PaperList: React.SFC<PaperListProps> = (props) => {
         <div className="w-full h-screen overflow-y-scroll overflow-x-hidden">
             {
                 props.papers.map((paper) => {
-                    return (<PaperPreview key={paper.title} title={paper.title} abstract={paper.abstract} />);
+                    return (<PaperPreview key={paper.title} title={paper.title} summary={paper.summary} />);
                 })
             }
         </div>

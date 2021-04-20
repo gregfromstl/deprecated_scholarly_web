@@ -20,7 +20,7 @@ const CategoryPanel: React.SFC<CategoryPanelProps> = (props) => {
                     <Camera className="w-12" />
                     Computer Vision
                 </CategoryButton>
-                <CategoryButton onClick={ props.selectCategory } category="quantitative finance" active={props.terms.includes("quantitative finance")}>
+                <CategoryButton onClick={ props.selectCategory } category="finance" active={props.terms.includes("finance")}>
                     <Finance className="w-12" />
                     Finance
                 </CategoryButton>
@@ -28,7 +28,7 @@ const CategoryPanel: React.SFC<CategoryPanelProps> = (props) => {
                     <Robot className="w-12" />
                     Robotics
                 </CategoryButton>
-                <CategoryButton onClick={ props.selectCategory } category="quantitative biology neuroscience" active={props.terms.includes("quantitative biology neuroscience")}>
+                <CategoryButton onClick={ props.selectCategory } category="neuroscience" active={props.terms.includes("neuroscience")}>
                     <Brain className="w-12" />
                     Neuroscience
                 </CategoryButton>
