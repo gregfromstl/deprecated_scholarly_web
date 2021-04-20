@@ -23,9 +23,22 @@ class ContentView extends React.Component<ContentViewProps, ContentViewState> {
             papers: []
         }
         this.arxivService = new ArxivService();
+        this.submitSearch = this.submitSearch.bind(this);
         this.toggleTerm = this.toggleTerm.bind(this);
         this.addTerms = this.addTerms.bind(this);
         this.removeTerm = this.removeTerm.bind(this);
+    }
+
+    private submitSearch(terms: string[]) {
+        this.arxivService.queryArxiv(terms)
+            .then((result) => {
+                this.setState({
+                    papers: result
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     private async toggleTerm(term: string) {
@@ -35,15 +48,7 @@ class ContentView extends React.Component<ContentViewProps, ContentViewState> {
         } else {
             await this.addTerms([term]);
         }
-        this.arxivService.queryArxiv(this.state.terms)
-            .then((result) => {
-                this.setState({
-                    papers: result
-                });
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        this.submitSearch(this.state.terms);
     }
 
     private async addTerms(terms: string[]) {

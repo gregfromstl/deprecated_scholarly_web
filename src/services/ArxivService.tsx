@@ -10,14 +10,12 @@ class ArxivService {
                 ...result
             ]
         }
-        console.log(all_results);
         // shuffle results
         return all_results.sort(() => Math.random() - 0.5);
     }
 
     private async querySingleTerm(term: string): Promise<Paper[]> {
         var query = term.replaceAll(" ", "\\ ");
-        console.log(query);
         var results = await fetch(`http://export.arxiv.org/api/query?search_query=all:${query}`)
             .then(res => res.text())
             .then(
