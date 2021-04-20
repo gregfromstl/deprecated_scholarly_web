@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: ubuntu-light;
+    src: url(assets/Ubuntu-Light.ttf);
+}
+@font-face {
+    font-family: ubuntu;
+    src: url(assets/Ubuntu-Regular.ttf);
+}
+@font-face {
+    font-family: ubuntu-bold;
+    src: url(assets/Ubuntu-Bold.ttf);
+}
+
+.font-light {
+    font-family: ubuntu-light;
+}
+* {
+    font-family: ubuntu;
+}
+.font-bold {
+    font-family: ubuntu-bold;
+}
+
 button:active {
     outline: none;
     border: none;

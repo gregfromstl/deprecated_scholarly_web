@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import CategoryPanel from './components/CategoryPanel';
+import ContentView from './components/ContentView';
 import Navbar from './components/Navbar';
  
 export interface AppProps {}
@@ -29,7 +29,7 @@ class App extends React.Component<AppProps, AppState> {
         return ( 
             <div className="App">
                 <Navbar onSelect={ this.onSelect } selected={this.state.selected} />
-                <CategoryPanel />
+                <ContentView />
             </div>
         );
     }
