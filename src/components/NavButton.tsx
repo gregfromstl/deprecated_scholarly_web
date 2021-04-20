@@ -5,25 +5,24 @@ import SearchIcon from './SearchIcon';
 export interface NavButtonProps {
     onSelect: Function,
     button_type: string;
-    color: string;
     selected: boolean;
 }
  
-const NavButton: React.SFC<NavButtonProps> = ({ onSelect, button_type, color, selected }) => {
+const NavButton: React.SFC<NavButtonProps> = ({ onSelect, button_type, selected }) => {
     var icon_object;
     switch(button_type) {
         case "Home":
-            icon_object = <HomeIcon color={color} selected={ selected }/>;
+            icon_object = <HomeIcon selected={ selected }/>;
             break;
         case "Search":
-            icon_object = <SearchIcon color={color} selected={ selected }/>;
+            icon_object = <SearchIcon selected={ selected }/>;
             break;
         default:
-            icon_object = <HomeIcon color={color} selected={ selected }/>;
+            icon_object = <HomeIcon selected={ selected }/>;
     }
 
     return (
-        <button onClick={ () => onSelect(button_type) } className={`text-${color} items-center flex flex-col ${selected ? "font-bold" : ""} pt-12 m-auto`}>
+        <button onClick={ () => onSelect(button_type) } className={`items-center flex flex-col ${selected ? "font-bold" : ""} pt-12 m-auto`}>
             { icon_object }
             { button_type }
         </button> 

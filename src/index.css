@@ -40,5 +40,6 @@ button:focus {
 
 .blue-gradient {
     background: linear-gradient(184.07deg, #FFFFFF -26.57%, #00AEEF 38.78%, #00AEEF 49.13%, #00AEEF 58.18%, #00AEEF 67.37%, #FFFFFF 132.56%);
+    color: #FFFFFF !important;
 }
 
