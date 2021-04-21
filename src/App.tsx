@@ -1,8 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-import ContentView from './components/ContentView';
-import Navbar from './components/Navbar';
+import SearchPanel from './components/SearchPanel';
  
 export interface AppProps {}
 
@@ -24,17 +23,21 @@ class App extends React.Component<AppProps, AppState> {
       this.setState({
         selected: selection
       });
+    }
 
+    private search() {
+      console.log("Searched");
     }
 
     render() { 
         return ( 
             <Router>
                 <div className="App flex flex-row">
-                      <Navbar onSelect={ this.onSelect } selected={ this.state.selected } />
-                      <Switch>
-                          <Route path="/"><ContentView selected={ this.state.selected }/></Route>
-                      </Switch>
+                    <SearchPanel search={ this.search } />
+                    {/* <Navbar onSelect={ this.onSelect } selected={ this.state.selected } />
+                    <Switch>
+                        <Route path="/"><ContentView selected={ this.state.selected }/></Route>
+                    </Switch> */}
                 </div>
             </Router>
         );
