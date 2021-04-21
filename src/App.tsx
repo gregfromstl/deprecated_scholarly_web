@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
+import PaperList from './components/PaperList';
 import SearchPanel from './components/SearchPanel';
  
 export interface AppProps {}
@@ -32,8 +33,9 @@ class App extends React.Component<AppProps, AppState> {
     render() { 
         return ( 
             <Router>
-                <div className="App flex flex-row">
+                <div className="App flex flex-col">
                     <SearchPanel search={ this.search } />
+                    <PaperList papers={[]} />
                     {/* <Navbar onSelect={ this.onSelect } selected={ this.state.selected } />
                     <Switch>
                         <Route path="/"><ContentView selected={ this.state.selected }/></Route>
