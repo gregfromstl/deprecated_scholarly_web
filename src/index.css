@@ -14,6 +14,10 @@
     font-family: ubuntu-bold;
     src: url(assets/Ubuntu-Bold.ttf);
 }
+@font-face {
+    font-family: open-sans;
+    src: url(assets/OpenSans-Regular.ttf);
+}
 
 .font-light {
     font-family: ubuntu-light;
@@ -24,6 +28,10 @@
 .font-bold {
     font-family: ubuntu-bold;
 }
+.font-body {
+    font-family: open-sans;
+}
+
 
 input, input:hover, input:active {
     -webkit-appearance: none;
