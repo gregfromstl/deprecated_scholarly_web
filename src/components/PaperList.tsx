@@ -17,7 +17,7 @@ const PaperList: React.SFC<PaperListProps> = (props) => {
                     })
                     : 
                     <div className="h-screen w-full flex">
-                        <div className="text-gray-200 text-xl m-auto">Select a category to discover papers.</div>
+                        <div className="text-gray-light text-xl m-auto">Select a category to discover papers.</div>
                     </div>
                 
             }

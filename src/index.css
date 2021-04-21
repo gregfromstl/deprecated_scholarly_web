@@ -25,6 +25,12 @@
     font-family: ubuntu-bold;
 }
 
+input, input:hover, input:active {
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+}
+
 button:active {
     outline: none;
     border: none;
