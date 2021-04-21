@@ -27,7 +27,7 @@ class SearchPanel extends React.Component<SearchPanelProps, SearchPanelState> {
 
     render() { 
         return (
-            <div className="shadow-bottom w-screen p-4 pr-10 pl-10 flex flex-col md:flex-row justify-between">
+            <div className="fixed bg-white shadow-bottom w-screen p-4 pr-10 pl-10 flex flex-col md:flex-row justify-between">
                 <div className="flex flex-col m-auto mt-4 mb-4 md:m-0 w-96 md:w-64">
                     <Logo className="m-auto" />
                 </div>

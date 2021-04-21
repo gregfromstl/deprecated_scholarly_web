@@ -7,9 +7,9 @@ export interface PaperPreviewProps {
  
 const PaperPreview: React.SFC<PaperPreviewProps> = (props) => {
     return ( 
-        <div className="w-full p-8 border-b border-gray-light overflow-hidden">
+        <div className="w-1/2 m-auto p-16 border-b border-gray-light overflow-hidden">
             <div className="title text-xl">{ props.title }</div>
-            <div className="summary text-base text-gray">{ props.summary.substring(0,250) + "..." }</div>
+            <div className="summary text-base text-gray">{ props.summary.substring(0,500) + "..." }</div>
         </div>
     );
 }

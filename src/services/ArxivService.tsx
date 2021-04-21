@@ -1,21 +1,8 @@
 import Paper from '../types/Paper';
 
 class ArxivService {
-    public async queryArxiv(terms: string[]): Promise<Paper[]> {
-        var all_results: Paper[] = [];
-        for (var i = 0; i < terms.length; i++) {
-            var result = await this.querySingleTerm(terms[i]);
-            all_results = [
-                ...all_results,
-                ...result
-            ]
-        }
-        // shuffle results
-        return all_results.sort(() => Math.random() - 0.5);
-    }
-
-    private async querySingleTerm(term: string): Promise<Paper[]> {
-        var query = term.replaceAll(" ", "\\ ");
+    public async queryArxiv(terms: string): Promise<Paper[]> {
+        var query = terms.replaceAll(" ", "\\ ");
         var results = await fetch(`http://export.arxiv.org/api/query?search_query=all:${query}`)
             .then(res => res.text())
             .then(

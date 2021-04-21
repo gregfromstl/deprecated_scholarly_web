@@ -13,14 +13,16 @@ const PaperList: React.SFC<PaperListProps> = (props) => {
         <div>
             {
                 props.papers.length > 0 ?
-                    props.papers.map((paper) => {
-                        return (<PaperPreview key={paper.title} title={paper.title} summary={paper.summary} />);
-                    })
+                    <div className="h-full mt-16">
+                        {props.papers.map((paper) => {
+                            return (<PaperPreview key={paper.title} title={paper.title} summary={paper.summary} />);
+                        })}
+                    </div>
                     : 
-                    <div className="flex h-screen w-full fixed">
+                    <div className="flex w-full">
                         <div className="m-auto mt-36 md:mt-52">
                             <img className="w-52 h-52 m-auto" alt="Discover the cutting edge." src={reading_image} />
-                            <div className="text-gray-light text-xl m-4">Search to discover papers.</div>
+                            <div className="text-gray text-xl m-4">Search to discover papers.</div>
                         </div>
                     </div>
                 
