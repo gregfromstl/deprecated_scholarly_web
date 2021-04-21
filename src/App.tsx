@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import ContentView from './components/ContentView';
 import Navbar from './components/Navbar';
@@ -22,15 +23,20 @@ class App extends React.Component<AppProps, AppState> {
     private onSelect(selection: string) {
       this.setState({
         selected: selection
-      })
+      });
+
     }
 
     render() { 
         return ( 
-            <div className="App flex flex-row">
-                <Navbar onSelect={ this.onSelect } selected={this.state.selected} />
-                <ContentView />
-            </div>
+            <Router>
+                <div className="App flex flex-row">
+                      <Navbar onSelect={ this.onSelect } selected={ this.state.selected } />
+                      <Switch>
+                          <Route path="/"><ContentView /></Route>
+                      </Switch>
+                </div>
+            </Router>
         );
     }
 }

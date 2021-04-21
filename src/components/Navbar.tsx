@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-useless-constructor */
 import React from 'react';
 import NavButton from './NavButton';
-import SolidIconLogo from './SolidIconLogo';
+import SolidIconLogo from './icons/SolidIconLogo';
 
 export interface NavbarProps {
     onSelect: Function;

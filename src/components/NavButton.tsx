@@ -1,6 +1,6 @@
 import React from 'react';
-import HomeIcon from './HomeIcon';
-import SearchIcon from './SearchIcon';
+import HomeIcon from './icons/HomeIcon';
+import SearchIcon from './icons/SearchIcon';
 
 export interface NavButtonProps {
     onSelect: Function,
