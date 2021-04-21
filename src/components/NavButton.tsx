@@ -22,7 +22,7 @@ const NavButton: React.SFC<NavButtonProps> = ({ onSelect, button_type, selected 
     }
 
     return (
-        <button onClick={ () => onSelect(button_type) } className={`items-center flex flex-col ${selected ? "font-bold" : ""} pt-12 m-auto`}>
+        <button onClick={ () => onSelect(button_type) } className={`items-center flex flex-col ${selected ? "font-bold" : "font-light"} pt-12 m-auto`}>
             { icon_object }
             { button_type }
         </button> 
