@@ -3,9 +3,10 @@ import ArxivService from '../services/ArxivService';
 import CategoryPanel from './CategoryPanel';
 import PaperList from './PaperList';
 import Paper from '../types/Paper';
+import SearchPanel from './SearchPanel';
 
 export interface ContentViewProps {
-    
+    selected: string;
 }
  
 export interface ContentViewState {
@@ -29,7 +30,8 @@ class ContentView extends React.Component<ContentViewProps, ContentViewState> {
         this.removeTerm = this.removeTerm.bind(this);
     }
 
-    private submitSearch(terms: string[]) {
+    private submitSearch(terms: string[] | string) {
+        terms = typeof(terms) === "string" ? [terms] : terms; 
         this.arxivService.queryArxiv(terms)
             .then((result) => {
                 this.setState({
@@ -72,9 +74,13 @@ class ContentView extends React.Component<ContentViewProps, ContentViewState> {
         return ( 
             <div className="w-full flex flex-row">
                 <div className="shadow-right bg-white w-96 h-screen text-2xl font-light top-0 left-28 p-8">
-                    <CategoryPanel terms={ this.state.terms } selectCategory={ this.toggleTerm } />
+                    {
+                        this.props.selected === "Home" ?
+                            <CategoryPanel terms={ this.state.terms } selectCategory={ this.toggleTerm } />
+                            : <SearchPanel search={ this.submitSearch } />
+                    }
                 </div>
-                <PaperList papers={this.state.papers} />
+                <PaperList papers={ this.state.papers } />
             </div>
         );
     }

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../assets/camera.svg';
 import { ReactComponent as Camera } from '../assets/camera.svg';
 import { ReactComponent as Finance } from '../assets/finance.svg';
 import { ReactComponent as Robot } from '../assets/robot.svg';
@@ -12,7 +11,7 @@ export interface CategoryPanelProps {
 }
  
 const CategoryPanel: React.SFC<CategoryPanelProps> = (props) => {
-    return ( 
+    return (
         <div>
             Categories
             <div className="categories text-sm items-center flex flex-col">

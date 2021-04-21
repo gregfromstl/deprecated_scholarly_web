@@ -33,7 +33,7 @@ class App extends React.Component<AppProps, AppState> {
                 <div className="App flex flex-row">
                       <Navbar onSelect={ this.onSelect } selected={ this.state.selected } />
                       <Switch>
-                          <Route path="/"><ContentView /></Route>
+                          <Route path="/"><ContentView selected={ this.state.selected }/></Route>
                       </Switch>
                 </div>
             </Router>
