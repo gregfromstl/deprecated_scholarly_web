@@ -10,6 +10,7 @@ export interface AppProps {}
 
 export interface AppState {
   papers: Paper[];
+  invalid_search: boolean;
 }
  
 class App extends React.Component<AppProps, AppState> {
@@ -18,7 +19,8 @@ class App extends React.Component<AppProps, AppState> {
     constructor(props: AppProps | Readonly<AppProps>) {
         super(props);
         this.state = {
-          papers: []
+          papers: [],
+          invalid_search: false
         }
         this.arxivService = new ArxivService();
         this.search = this.search.bind(this);
@@ -28,11 +30,15 @@ class App extends React.Component<AppProps, AppState> {
         this.arxivService.queryArxiv(terms)
             .then((result) => {
                 this.setState({
-                    papers: result
+                    papers: result,
+                    invalid_search: result.length === 0 ? true : false
                 });
             })
             .catch((err) => {
                 console.log(err);
+                this.setState({
+                    invalid_search: true
+                });
             });
     }
 
@@ -41,11 +47,7 @@ class App extends React.Component<AppProps, AppState> {
             <Router>
                 <div className="App flex flex-col">
                     <SearchPanel search={ this.search } />
-                    <PaperList papers={ this.state.papers } />
-                    {/* <Navbar onSelect={ this.onSelect } selected={ this.state.selected } />
-                    <Switch>
-                        <Route path="/"><ContentView selected={ this.state.selected }/></Route>
-                    </Switch> */}
+                    <PaperList papers={ this.state.papers } invalid={ this.state.invalid_search } />
                 </div>
             </Router>
         );

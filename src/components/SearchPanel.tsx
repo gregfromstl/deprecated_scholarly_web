@@ -38,7 +38,12 @@ class SearchPanel extends React.Component<SearchPanelProps, SearchPanelState> {
                         </span>
                         <input className="pl-2 pr-2 w-full" type="text" placeholder="What do you want to research?" onChange={(event) => { this.setInput(event.target.value) }} />
                     </div>
-                    <button className="text-base rounded-r-lg p-1 bg-blue text-white w-32 font-light" onClick={ () => this.props.search(this.state.input) }>Search</button>
+                    <button 
+                        className="text-base rounded-r-lg p-1 bg-blue hover:bg-blue-dark text-white w-32 font-light" 
+                        onClick={ () => this.props.search(this.state.input) } 
+                        disabled={this.state.input.length < 1 ? true : false}>
+                            Search
+                    </button>
                 </div>
             </div>
         );
