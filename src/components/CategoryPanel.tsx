@@ -13,7 +13,7 @@ export interface CategoryPanelProps {
  
 const CategoryPanel: React.SFC<CategoryPanelProps> = (props) => {
     return ( 
-        <div className="shadow-right bg-white w-72 h-screen text-2xl font-light top-0 left-28 p-8">
+        <div>
             Categories
             <div className="categories text-sm items-center flex flex-col">
                 <CategoryButton onClick={ props.selectCategory } category="computer vision" active={props.terms.includes("computer vision")}>

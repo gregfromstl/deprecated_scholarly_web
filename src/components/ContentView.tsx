@@ -71,7 +71,9 @@ class ContentView extends React.Component<ContentViewProps, ContentViewState> {
     render() { 
         return ( 
             <div className="w-full flex flex-row">
-                <CategoryPanel terms={ this.state.terms } selectCategory={ this.toggleTerm } />
+                <div className="shadow-right bg-white w-96 h-screen text-2xl font-light top-0 left-28 p-8">
+                    <CategoryPanel terms={ this.state.terms } selectCategory={ this.toggleTerm } />
+                </div>
                 <PaperList papers={this.state.papers} />
             </div>
         );

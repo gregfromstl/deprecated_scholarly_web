@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-useless-constructor */
 import React from 'react';
 import NavButton from './NavButton';
 import SolidIconLogo from './icons/SolidIconLogo';
