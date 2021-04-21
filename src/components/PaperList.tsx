@@ -16,7 +16,7 @@ const PaperList: React.SFC<PaperListProps> = (props) => {
             {
 
                 props.papers.length > 0 ?
-                    <div className="h-full mt-16">
+                    <div className="h-full mt-44 md:mt-16">
                         {props.papers.map((paper) => {
                             return (<PaperPreview key={paper.title} title={paper.title} summary={paper.summary} />);
                         })}
