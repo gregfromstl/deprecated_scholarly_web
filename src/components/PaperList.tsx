@@ -12,9 +12,8 @@ export interface PaperListProps {
  
 const PaperList: React.SFC<PaperListProps> = (props) => {
     return ( 
-        <div>
+        <div className="">
             {
-
                 props.papers.length > 0 ?
                     <div className="h-full mt-44 md:mt-16">
                         {props.papers.map((paper) => {
