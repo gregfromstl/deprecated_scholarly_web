@@ -4,7 +4,7 @@ import './App.css';
 import Paper from './types/Paper';
 import PaperList from './components/PaperList';
 import SearchPanel from './components/SearchPanel';
-import ArxivService from './services/ArxivService';
+import PaperService from './services/PaperService';
  
 export interface AppProps {}
 
@@ -14,7 +14,7 @@ export interface AppState {
 }
  
 class App extends React.Component<AppProps, AppState> {
-    arxivService: ArxivService;
+    paperService: PaperService;
 
     constructor(props: AppProps | Readonly<AppProps>) {
         super(props);
@@ -22,19 +22,19 @@ class App extends React.Component<AppProps, AppState> {
           papers: [],
           invalid_search: false
         }
-        this.arxivService = new ArxivService();
+        this.paperService = new PaperService();
         this.search = this.search.bind(this);
     }
 
     private search(terms: string) {
-        this.arxivService.queryArxiv(terms)
-            .then((result) => {
+        this.paperService.queryPapers(terms)
+            .then((result: any) => {
                 this.setState({
                     papers: result,
                     invalid_search: result.length === 0 ? true : false
                 });
             })
-            .catch((err) => {
+            .catch((err: any) => {
                 console.log(err);
                 this.setState({
                     invalid_search: true
