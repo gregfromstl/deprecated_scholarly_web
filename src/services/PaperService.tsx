@@ -1,10 +1,10 @@
 import Paper from '../types/Paper'
 
 class PaperService {
-    public async queryPapers(terms: string): Promise<Paper> {
-        var query = terms.replaceAll(' ', '\\ ')
+    public async queryPapers(query: string, start = 0): Promise<Paper> {
+        query = query.replaceAll(' ', '\\ ')
         var papers = await fetch(
-            `http://127.0.0.1:8000/papers/search?query=${query}`
+            `http://127.0.0.1:8000/papers/search?query=${query}&start=${start}`
         )
             .then((res) => res.text())
             .then((text) => JSON.parse(text))

@@ -1,58 +1,83 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import './App.css';
-import Paper from './types/Paper';
-import PaperList from './components/PaperList';
-import SearchPanel from './components/SearchPanel';
-import PaperService from './services/PaperService';
- 
+import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import './App.css'
+import Paper from './types/Paper'
+import PaperList from './components/PaperList'
+import SearchPanel from './components/SearchPanel'
+import PaperService from './services/PaperService'
+
 export interface AppProps {}
 
 export interface AppState {
-  papers: Paper[];
-  invalid_search: boolean;
+    query: string
+    papers: Paper[]
+    invalid_search: boolean
 }
- 
+
 class App extends React.Component<AppProps, AppState> {
-    paperService: PaperService;
+    paperService: PaperService
 
     constructor(props: AppProps | Readonly<AppProps>) {
-        super(props);
+        super(props)
         this.state = {
-          papers: [],
-          invalid_search: false
+            query: '',
+            papers: [],
+            invalid_search: false,
         }
-        this.paperService = new PaperService();
-        this.search = this.search.bind(this);
+        this.paperService = new PaperService()
+        this.search = this.search.bind(this)
     }
 
-    private search(terms: string) {
-        this.paperService.queryPapers(terms)
+    componentDidMount() {
+        document.addEventListener('scroll', this.trackScrolling)
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('scroll', this.trackScrolling)
+    }
+
+    trackScrolling = () => {
+        const wrappedElement = document.getElementById('paper-list')
+        if (wrappedElement && this.isBottom(wrappedElement)) {
+            this.search(this.state.query, true)
+        }
+    }
+
+    private isBottom(el: Element) {
+        return el.getBoundingClientRect().bottom <= window.innerHeight
+    }
+
+    private search(query: string, extend = false) {
+        this.paperService
+            .queryPapers(query, extend ? this.state.papers.length : 0)
             .then((result: any) => {
                 this.setState({
-                    papers: result,
-                    invalid_search: result.length === 0 ? true : false
-                });
+                    query: query,
+                    papers: extend ? this.state.papers.concat(result) : result,
+                    invalid_search: result.length === 0 ? true : false,
+                })
             })
             .catch((err: any) => {
-                console.log(err);
+                console.log(err)
                 this.setState({
-                    invalid_search: true
-                });
-            });
+                    invalid_search: true,
+                })
+            })
     }
 
-    render() { 
-        return ( 
+    render() {
+        return (
             <Router>
                 <div className="App flex flex-col">
-                    <SearchPanel search={ this.search } />
-                    <PaperList papers={ this.state.papers } invalid={ this.state.invalid_search } />
+                    <SearchPanel search={this.search} />
+                    <PaperList
+                        papers={this.state.papers}
+                        invalid={this.state.invalid_search}
+                    />
                 </div>
             </Router>
-        );
+        )
     }
 }
- 
-export default App;
 
+export default App

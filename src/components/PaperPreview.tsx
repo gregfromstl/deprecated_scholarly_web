@@ -6,10 +6,9 @@ export interface PaperPreviewProps {
 }
 
 const PaperPreview: React.SFC<PaperPreviewProps> = (props) => {
-    const abbreviation_length = Math.min(props.paper.summary.length, 100)
     const abbreviated_summary = props.paper.summary
         .split(' ')
-        .slice(0, abbreviation_length)
+        .slice(0, 100)
         .join(' ')
     return (
         <div className="w-full md:w-10/12 lg:w-7/12 m-auto p-8 md:p-16 border-b border-gray-light overflow-hidden">
