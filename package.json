@@ -52,5 +52,11 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true
   }
 }
