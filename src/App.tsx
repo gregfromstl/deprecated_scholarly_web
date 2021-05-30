@@ -68,7 +68,7 @@ class App extends React.Component<AppProps, AppState> {
     render() {
         return (
             <Router>
-                <div className="App flex flex-col">
+                <div className="app flex flex-col">
                     <SearchPanel search={this.search} />
                     <PaperList
                         papers={this.state.papers}
