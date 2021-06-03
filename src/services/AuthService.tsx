@@ -4,7 +4,7 @@ class AuthService {
             email: email,
             password: password,
         }
-        await fetch(`http://127.0.0.1:8000/signin`, {
+        var user = await fetch(`http://127.0.0.1:8000/signin`, {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -17,7 +17,10 @@ class AuthService {
             body: JSON.stringify(data),
         })
             .then((res) => res.text())
-            .then((text) => console.log(JSON.parse(text)))
+            .then((text) => {
+                return JSON.parse(text)['user']
+            })
+        return user
     }
 }
 
